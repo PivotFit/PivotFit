@@ -2,6 +2,14 @@
 
 **Adaptive Workout & Fitness Tracking Web Application**
 
+## Live Application
+
+PivotFit is currently deployed as a live web application.
+
+**Live Site:** https://pivot-fit.vercel.app/
+
+The application is under active development and will continue to evolve throughout the semester.
+
 ## Product Vision
 
 **For:**  
@@ -33,7 +41,7 @@ Helps users adapt instead of abandoning their workout by recommending appropriat
 
 ## What Makes PivotFit Different?
 
-PivotFit is designed to help users adapt their workout in real time when their original plan is no longer possible.
+PivotFit is designed to help users **adapt their workout in real time when their original plan is no longer possible**.
 
 For example, if a user is scheduled to perform a barbell bench press but all of the benches are occupied, PivotFit can quickly suggest appropriate alternatives, such as a dumbbell press or another comparable movement. The user can select an alternative and continue their workout without losing the original purpose of the exercise.
 
@@ -64,3 +72,36 @@ The goal is simple: **adapt instead of abandon.**
 ## Project Goal
 
 The goal of PivotFit is to create a responsive and accessible fitness application that goes beyond simply recording workouts. PivotFit helps users continue training when real-world circumstances interfere with their original plan by providing practical alternatives that preserve the intent of the workout as closely as possible.
+
+## Development
+
+PivotFit is being developed as a team project using:
+
+- React
+- Vite
+- JavaScript
+- CSS
+- Git and GitHub
+- Vercel
+
+Development follows a collaborative Git workflow where features and changes are developed on separate branches, reviewed through pull requests, and merged into the `main` branch.
+
+Changes merged into `main` are deployed to the live application through Vercel.
+
+## Running the Project Locally
+
+Clone the repository and install the project dependencies:
+
+    git clone https://github.com/dgreen81-MSU/PivotFit.git
+    cd PivotFit
+    npm install
+
+Start the development server:
+
+    npm run dev
+
+Then open the local URL provided by Vite in your browser.
+
+## Current Status
+
+PivotFit is in active development. The current version establishes the initial application structure and user interface. Features will be implemented and refined incrementally throughout the semester as the team continues development.
