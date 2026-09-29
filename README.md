@@ -30,3 +30,37 @@ Helps users adapt instead of abandoning their workout by recommending appropriat
 - Beginner and intermediate gym-goers
 - People exercising in crowded gyms
 - People with limited workout time or equipment
+
+## What Makes PivotFit Different?
+
+PivotFit is designed to help users adapt their workout in real time when their original plan is no longer possible.
+
+For example, if a user is scheduled to perform a barbell bench press but all of the benches are occupied, PivotFit can quickly suggest appropriate alternatives, such as a dumbbell press or another comparable movement. The user can then select an alternative and continue their workout without losing the original purpose of the exercise.
+
+Rather than simply suggesting another exercise, PivotFit aims to recommend alternatives based on factors such as:
+
+- Muscle group
+- Movement pattern
+- Available equipment
+- Exercise difficulty
+- Available workout time
+- Original workout goal
+
+The goal is simple: **adapt instead of abandon.**
+
+## Core Features
+
+- Create and save workouts
+- Start and complete active workout sessions
+- Record exercises, sets, reps, and weight
+- Recommend exercise substitutions when equipment is unavailable
+- Adjust workouts when available workout time changes
+- Track workout history and personal progress
+- Display progress through a simple dashboard
+- Track whether the primary goal of the original workout was still achieved
+- Responsive design for desktop and mobile devices
+- Clear, accessible, and user-friendly navigation
+
+## Project Goal
+
+The goal of PivotFit is to create a responsive and accessible fitness application that goes beyond simply recording workouts. PivotFit helps users continue training when real-world circumstances interfere with their original plan by providing practical alternatives that preserve the intent of the workout as closely as possible.
