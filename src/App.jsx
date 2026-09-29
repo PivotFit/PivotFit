@@ -1,122 +1,72 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app">
+      <header className="navbar">
+        <div className="brand">
+          <span className="brand-mark">P</span>
+          <span>PivotFit</span>
         </div>
-        <div>
-          <h1>Get started</h1>
+
+        <nav className="nav-links">
+          <button className="nav-link active">Home</button>
+          <button className="nav-link">Workouts</button>
+          <button className="nav-link">Progress</button>
+          <button className="nav-link">Profile</button>
+        </nav>
+      </header>
+
+      <main className="dashboard">
+        <section className="welcome">
+          <p className="eyebrow">DASHBOARD</p>
+          <h1>Ready to train?</h1>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Stay on track, adjust when you need to, and keep moving forward.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        </section>
 
-      <div className="ticks"></div>
+        <section className="workout-card">
+          <div className="workout-card-header">
+            <div>
+              <p className="eyebrow">TODAY'S WORKOUT</p>
+              <h2>Chest + Triceps</h2>
+            </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+            <span className="status-badge">Scheduled</span>
+          </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          <div className="workout-meta">
+            <span>6 exercises</span>
+            <span>•</span>
+            <span>~60 min</span>
+          </div>
+
+          <button className="primary-button">Start Workout</button>
+        </section>
+
+        <section className="dashboard-grid">
+          <article className="stat-card">
+            <p className="eyebrow">THIS WEEK</p>
+            <strong>3</strong>
+            <span>Workouts completed</span>
+          </article>
+
+          <article className="stat-card">
+            <p className="eyebrow">CONSISTENCY</p>
+            <strong>75%</strong>
+            <span>Weekly goal</span>
+          </article>
+
+          <article className="stat-card">
+            <p className="eyebrow">NEXT UP</p>
+            <strong>Back + Biceps</strong>
+            <span>Tomorrow</span>
+          </article>
+        </section>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
