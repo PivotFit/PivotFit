@@ -1,66 +1,16 @@
-# PivotFit
+# React + Vite
 
-**Adaptive Workout & Fitness Tracking Web Application**
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Product Vision
+Currently, two official plugins are available:
 
-**For:**  
-College students, travelers, home-gym users, and beginner to intermediate gym-goers.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-**Who:**  
-Want to stay consistent with their fitness goals but may face limited time, unavailable equipment, or changing workout conditions.
+## React Compiler
 
-**PivotFit is:**  
-An adaptive workout and fitness tracking web application.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-**That:**  
-Allows users to create, track, and adjust workouts while preserving the original workout goal, muscle groups, and movement patterns.
+## Expanding the ESLint configuration
 
-**Unlike:**  
-Traditional fitness tracking applications that assume users can complete their planned workout exactly as written.
-
-**Our product:**  
-Helps users adapt instead of abandoning their workout by recommending appropriate exercise substitutions and adjustments based on their current situation.
-
-## Primary Stakeholders
-
-- College students
-- Travelers
-- Home-gym users
-- Beginner and intermediate gym-goers
-- People exercising in crowded gyms
-- People with limited workout time or equipment
-
-## What Makes PivotFit Different?
-
-PivotFit is designed to help users adapt their workout in real time when their original plan is no longer possible.
-
-For example, if a user is scheduled to perform a barbell bench press but all of the benches are occupied, PivotFit can quickly suggest appropriate alternatives, such as a dumbbell press or another comparable movement. The user can then select an alternative and continue their workout without losing the original purpose of the exercise.
-
-Rather than simply suggesting another exercise, PivotFit aims to recommend alternatives based on factors such as:
-
-- Muscle group
-- Movement pattern
-- Available equipment
-- Exercise difficulty
-- Available workout time
-- Original workout goal
-
-The goal is simple: **adapt instead of abandon.**
-
-## Core Features
-
-- Create and save workouts
-- Start and complete active workout sessions
-- Record exercises, sets, reps, and weight
-- Recommend exercise substitutions when equipment is unavailable
-- Adjust workouts when available workout time changes
-- Track workout history and personal progress
-- Display progress through a simple dashboard
-- Track whether the primary goal of the original workout was still achieved
-- Responsive design for desktop and mobile devices
-- Clear, accessible, and user-friendly navigation
-
-## Project Goal
-
-The goal of PivotFit is to create a responsive and accessible fitness application that goes beyond simply recording workouts. PivotFit helps users continue training when real-world circumstances interfere with their original plan by providing practical alternatives that preserve the intent of the workout as closely as possible.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
