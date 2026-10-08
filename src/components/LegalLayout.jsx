@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { LEGAL_LAST_UPDATED } from "../lib/legal";
+import logo from "../assets/logo.png";
 
 function LegalLayout({ title, children }) {
   return (
     <div className="app">
       <header className="navbar">
         <Link to="/" className="brand">
-          <span className="brand-mark">P</span>
+          <img className="brand-mark" src={logo} alt="" />
           <span>PivotFit</span>
         </Link>
       </header>

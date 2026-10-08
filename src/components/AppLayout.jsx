@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
+import logo from "../assets/logo.png";
 
 function navClass({ isActive }) {
   return isActive ? "nav-link active" : "nav-link";
@@ -10,7 +11,7 @@ function AppLayout() {
     <div className="app">
       <header className="navbar">
         <div className="brand">
-          <span className="brand-mark">P</span>
+          <img className="brand-mark" src={logo} alt="" />
           <span>PivotFit</span>
         </div>
 
