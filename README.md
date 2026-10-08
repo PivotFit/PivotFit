@@ -102,6 +102,26 @@ Start the development server:
 
 Then open the local URL provided by Vite in your browser.
 
+## Authentication Setup (Supabase)
+
+PivotFit uses [Supabase](https://supabase.com) for user accounts and data storage. One team member creates the Supabase project; everyone else only needs the URL and publishable key.
+
+1. **Create a Supabase project** at https://supabase.com/dashboard.
+2. **Run the database migration:** open **SQL Editor** in the Supabase dashboard, paste the contents of `supabase/migrations/20261008000000_profiles_and_account_deletion.sql`, and run it. This creates the `profiles` table, the signup trigger, and the `delete_account()` function.
+3. **Configure auth URLs:** in **Authentication > URL Configuration**:
+   - Set **Site URL** to `https://pivot-fit.vercel.app`
+   - Add these **Redirect URLs**:
+     - `http://localhost:5173/**`
+     - `https://pivot-fit.vercel.app/**`
+4. **Set local environment variables:** copy `.env.example` to `.env.local` and fill in the values from **Project Settings > API Keys**. Use the *publishable* (or legacy *anon*) key, **never** the secret/service_role key. `.env.local` is gitignored.
+5. **Set Vercel environment variables:** add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in the Vercel project settings, then redeploy.
+
+Email confirmation is on by default in Supabase, so new users must click the link in their email before logging in. Supabase's built-in email sender is rate-limited and meant for development. Configure a custom SMTP provider before real users sign up.
+
+### Legal pages
+
+The Terms of Service (`/terms`) and Privacy Policy (`/privacy`) are drafts and are not legal advice. Before launch, update the placeholders in `src/lib/legal.js` (contact email, governing state). When either document changes, bump `TERMS_VERSION` so each user's accepted version is recorded correctly.
+
 ## Current Status
 
 PivotFit is in active development. The current version establishes the initial application structure and user interface. Features will be implemented and refined incrementally throughout the semester as the team continues development.
