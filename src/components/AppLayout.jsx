@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 
 function navClass({ isActive }) {
   return isActive ? "nav-link active" : "nav-link";

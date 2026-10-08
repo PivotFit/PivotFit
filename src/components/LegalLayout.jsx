@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { LEGAL_LAST_UPDATED } from "../lib/legal";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 
 function LegalLayout({ title, children }) {
   return (
