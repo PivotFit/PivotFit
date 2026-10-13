@@ -5,6 +5,7 @@
 ## Live Application
 
 PivotFit is currently deployed as a live web application.
+PivotFit is deployed through Vercel from the organization's main branch.
 
 **Live Site:** https://pivot-fit.vercel.app/
 
