@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getRememberMe, setRememberMe } from "../lib/authStorage";
 import { supabase } from "../lib/supabaseClient";
 import AuthLayout from "../components/AuthLayout";
 
@@ -8,6 +9,7 @@ function Login() {
   const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(getRememberMe);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -16,6 +18,8 @@ function Login() {
     setError("");
     setSubmitting(true);
 
+    // Must be set before signing in: it decides where the session is saved.
+    setRememberMe(remember);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     setSubmitting(false);
@@ -50,6 +54,22 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+        </label>
+
+        <label className="checkbox-row">
+          <input
+            type="checkbox"
+            checked={remember}
+            onChange={(e) => setRemember(e.target.checked)}
+          />
+          <span>
+            Remember me
+            <span className="checkbox-hint">
+              {remember
+                ? "Stay signed in on this device."
+                : "You'll be signed out when you close the browser."}
+            </span>
+          </span>
         </label>
 
         {error && <p className="form-error" role="alert">{error}</p>}

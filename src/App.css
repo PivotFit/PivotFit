@@ -297,6 +297,12 @@ a.nav-link.active {
   accent-color: #6c5ce7;
 }
 
+.checkbox-hint {
+  display: block;
+  color: #6b7482;
+  font-size: 0.8rem;
+}
+
 .auth-card a,
 .legal a,
 .site-footer a {

@@ -1,11 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
+import { authStorage } from "./authStorage";
 import { devSupabaseStub } from "./devAuth";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
 const realClient =
-  supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+  supabaseUrl && supabaseKey
+    ? createClient(supabaseUrl, supabaseKey, { auth: { storage: authStorage } })
+    : null;
 
 // Dev only: skip login when Supabase isn't configured yet, or when
 // VITE_SKIP_AUTH=true is set in .env.local.

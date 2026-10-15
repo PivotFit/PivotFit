@@ -98,9 +98,12 @@ function Privacy() {
 
       <h2>5. Cookies and local storage</h2>
       <p>
-        PivotFit stores your login session in your browser's local storage so
-        you stay signed in. This is strictly necessary for the Service to
-        work. We do not use advertising or cross-site tracking cookies.
+        PivotFit stores your login session in your browser so you stay signed
+        in. If you choose "Remember me," it is kept in local storage and
+        persists until you log out; otherwise it is kept in session storage
+        and cleared when you close your browser. This is strictly necessary
+        for the Service to work. We do not use advertising or cross-site
+        tracking cookies.
       </p>
 
       <h2>6. Data retention and deletion</h2>
