@@ -38,10 +38,15 @@
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
+/* Links and buttons share this class; inline-flex keeps them the same height
+   and vertically aligned. */
 .nav-link {
+  display: inline-flex;
+  align-items: center;
   border: 0;
   background: transparent;
   color: #929baa;
@@ -49,6 +54,8 @@
   border-radius: 8px;
   cursor: pointer;
   font: inherit;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .nav-link:hover,
@@ -94,8 +101,9 @@
 
 .workout-card-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 24px;
+  gap: 12px 24px;
   align-items: flex-start;
 }
 
@@ -114,9 +122,14 @@
 
 .workout-meta {
   display: flex;
-  gap: 9px;
+  flex-wrap: wrap;
+  gap: 4px 9px;
   margin: 12px 0 28px;
   color: #929baa;
+}
+
+.workout-meta span {
+  white-space: nowrap;
 }
 
 .primary-button {
@@ -1082,7 +1095,18 @@ a.secondary-button {
   .nav-links {
     width: 100%;
     margin-top: 14px;
-    overflow-x: auto;
+    gap: 4px;
+    justify-content: space-between;
+  }
+
+  .nav-link {
+    padding: 9px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Log out is on the Profile page; dropping it here lets the nav fit. */
+  .nav-logout {
+    display: none;
   }
 
   .dashboard {
@@ -1169,5 +1193,17 @@ a.secondary-button {
   .pref-list div {
     flex-direction: column;
     gap: 2px;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .nav-link {
+    padding: 8px 6px;
+    font-size: 0.85rem;
   }
 }

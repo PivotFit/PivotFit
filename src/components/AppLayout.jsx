@@ -26,7 +26,7 @@ function AppLayout() {
           <NavLink to="/profile" className={navClass}>
             Profile
           </NavLink>
-          <button className="nav-link" onClick={() => supabase.auth.signOut()}>
+          <button className="nav-link nav-logout" onClick={() => supabase.auth.signOut()}>
             Log out
           </button>
         </nav>
