@@ -9,6 +9,7 @@
 .starter-option { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #526075; border-radius: 8px; cursor: pointer; }
 .starter-option:has(input:checked) { border-color: #a99bff; background: #30294f; }
 .starter-option input { accent-color: #a99bff; }
+.starter-minutes { display: block; width: min(100%, 200px); box-sizing: border-box; margin-top: 10px; padding: 12px; font: inherit; }
 .starter-option:focus-within { outline: 2px solid #a99bff; outline-offset: 3px; }
 
 .app {
