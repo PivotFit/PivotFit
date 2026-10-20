@@ -12,6 +12,7 @@ import {
   todayKey,
 } from "../lib/training";
 import SetupPrompt from "../components/SetupPrompt";
+import StarterWorkout from "../components/workout/StarterWorkout";
 
 function Plan() {
   const [profile] = useUserData("profile", null);
@@ -21,6 +22,7 @@ function Plan() {
   if (!profile) {
     return (
       <main className="dashboard">
+        <StarterWorkout />
         <SetupPrompt />
       </main>
     );
@@ -31,6 +33,7 @@ function Plan() {
 
   return (
     <main className="dashboard">
+      <StarterWorkout />
       <section className="welcome page-header">
         <div>
           <p className="eyebrow">WEEKLY PLAN</p>
