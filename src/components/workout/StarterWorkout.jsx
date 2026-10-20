@@ -1,17 +1,14 @@
 import { useState } from "react";
-import { EQUIPMENT, durationError } from "../../lib/starterWorkout";
-
-const GOALS = {
-  strength: "Strength",
-  hypertrophy: "Hypertrophy",
-  general: "General Fitness",
-};
+import { EQUIPMENT, GOALS, durationError, generateStarterWorkout } from "../../lib/starterWorkout";
 
 function StarterWorkout() {
   const [goal, setGoal] = useState("general");
   const [minutes, setMinutes] = useState("45");
   const [equipment, setEquipment] = useState(["bodyweight"]);
+  const [workout, setWorkout] = useState(null);
   const error = durationError(minutes);
+  const changed = workout && (goal !== workout.goal || Number(minutes) !== workout.minutes ||
+    equipment.join() !== workout.equipment.join());
 
   function toggleEquipment(value) {
     setEquipment((current) => current.includes(value)
@@ -56,6 +53,32 @@ function StarterWorkout() {
           ))}
         </div>
       </fieldset>
+      <button type="button" className="primary-button" disabled={Boolean(error)}
+        onClick={() => setWorkout(generateStarterWorkout({ goal, minutes, equipment }))}>
+        Generate Workout
+      </button>
+      <div aria-live="polite" aria-atomic="true">
+        {!workout ? <p>Choose your setup, then generate your starter workout.</p> : (
+          <>
+            <h3>{GOALS[workout.goal]} · {workout.minutes} minutes</h3>
+            <p>Equipment: {workout.equipment.map((item) => EQUIPMENT[item]).join(", ") || "None selected"}</p>
+            {changed && <p>Setup changed. Select Generate Workout to update this plan.</p>}
+            {workout.exercises.length === 0 ? (
+              <p>No compatible exercises found. Select Bodyweight or add available equipment and generate again.</p>
+            ) : (
+              <ol className="program-list">
+                {workout.exercises.map((exercise) => (
+                  <li className="program-item" key={exercise.id}>
+                    <strong>{exercise.name}</strong>
+                    <p>{exercise.sets} sets × {exercise.reps} reps</p>
+                  </li>
+                ))}
+              </ol>
+            )}
+            <p className="muted">Workload uses estimated work and rest time with five minutes reserved for warm-up. Adjust your pace as needed.</p>
+          </>
+        )}
+      </div>
     </section>
   );
 }
