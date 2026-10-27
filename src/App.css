@@ -2,6 +2,16 @@
   min-height: 100vh;
 }
 
+.starter-workout { margin-bottom: 36px; }
+.starter-workout fieldset { border: 0; padding: 0; margin: 20px 0; min-width: 0; }
+.starter-workout legend { font-weight: 700; margin-bottom: 12px; }
+.starter-options { display: flex; flex-wrap: wrap; gap: 12px; }
+.starter-option { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #526075; border-radius: 8px; cursor: pointer; }
+.starter-option:has(input:checked) { border-color: #a99bff; background: #30294f; }
+.starter-option input { accent-color: #a99bff; }
+.starter-minutes { display: block; width: min(100%, 200px); box-sizing: border-box; margin-top: 10px; padding: 12px; font: inherit; }
+.starter-option:focus-within { outline: 2px solid #a99bff; outline-offset: 3px; }
+
 .app {
   min-height: 100vh;
   background: #0d1117;
