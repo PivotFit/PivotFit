@@ -31,3 +31,11 @@ textarea,
 select {
   font: inherit;
 }
+
+/* One clearly visible keyboard focus ring everywhere (WCAG 2.4.7). The light
+   purple has 6.7:1+ contrast on every app background. :where() keeps this
+   low-priority so components can still customize it. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #a99cf7;
+  outline-offset: 2px;
+}

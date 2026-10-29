@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
+import { usePageTitle } from "../hooks/usePageTitle";
 
-function AuthLayout({ title, subtitle, children }) {
+// pageTitle is the browser tab title; defaults to the heading.
+function AuthLayout({ title, pageTitle = title, subtitle, children }) {
+  usePageTitle(pageTitle);
+
   return (
     <div className="app auth-page">
       <main className="auth-card">

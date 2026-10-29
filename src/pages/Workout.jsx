@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { EXERCISES_BY_ID } from "../data/exercises";
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useUserData } from "../hooks/useUserData";
+import { logFieldError } from "../lib/logValidation";
 import {
   DAYS_BY_KEY,
   buildPlan,
@@ -18,7 +20,13 @@ import WorkoutSummary from "../components/workout/WorkoutSummary";
 
 const RATING_LIMIT = 6;
 
+// Saved history keeps only valid logged values; anything invalid is dropped.
+function validOrBlank(field, value) {
+  return logFieldError(field, value) ? "" : String(value ?? "").trim();
+}
+
 function Workout() {
+  usePageTitle("Workout");
   const { day } = useParams();
   const navigate = useNavigate();
   const [profile] = useUserData("profile", null);
@@ -160,9 +168,9 @@ function Workout() {
           pattern: e.pattern,
           done: e.done,
           swappedFrom: e.swappedFrom,
-          sets: e.log.sets,
-          reps: e.log.reps,
-          weight: e.log.weight,
+          sets: validOrBlank("sets", e.log.sets),
+          reps: validOrBlank(EXERCISES_BY_ID[e.exerciseId].unit === "seconds" ? "seconds" : "reps", e.log.reps),
+          weight: validOrBlank("weight", e.log.weight),
           rating: session.ratings[e.exerciseId] ?? null,
         })),
       },
@@ -276,6 +284,7 @@ function Workout() {
 
       {swapIndex !== null && (
         <SwapPanel
+          index={swapIndex}
           item={session.exercises[swapIndex]}
           options={swapOptions(session, swapIndex, profile, ratings)}
           onPick={handlePickSwap}

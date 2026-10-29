@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { LEGAL_LAST_UPDATED } from "../lib/legal";
 import logo from "../assets/logo.svg";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 function LegalLayout({ title, children }) {
+  usePageTitle(title);
+
   return (
     <div className="app">
       <header className="navbar">

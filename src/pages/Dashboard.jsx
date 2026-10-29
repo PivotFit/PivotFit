@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useUserData } from "../hooks/useUserData";
 import {
   DAY_TYPES,
@@ -17,6 +18,7 @@ function isSameDay(a, b) {
 }
 
 function Dashboard() {
+  usePageTitle("Home");
   const [profile] = useUserData("profile", null);
   const [ratings] = useUserData("ratings", {});
   const [history] = useUserData("history", []);

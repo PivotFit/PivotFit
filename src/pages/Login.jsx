@@ -41,7 +41,7 @@ function Login() {
   }
 
   return (
-    <AuthLayout title="Welcome back" subtitle="Log in to keep your training on track.">
+    <AuthLayout title="Welcome back" pageTitle="Log in" subtitle="Log in to keep your training on track.">
       <form className="auth-form" onSubmit={handleSubmit}>
         <label>
           Email

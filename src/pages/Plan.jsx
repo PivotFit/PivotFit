@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { EXERCISES_BY_ID, LOCATIONS } from "../data/exercises";
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useUserData } from "../hooks/useUserData";
 import {
   DAY_TYPES,
@@ -15,6 +16,7 @@ import SetupPrompt from "../components/SetupPrompt";
 import StarterWorkout from "../components/workout/StarterWorkout";
 
 function Plan() {
+  usePageTitle("Workouts");
   const [profile] = useUserData("profile", null);
   const [ratings] = useUserData("ratings", {});
   const [now] = useState(() => new Date());

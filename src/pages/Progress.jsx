@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useUserData } from "../hooks/useUserData";
 import { bestStreak, createTracker, currentStreak } from "../lib/calendar";
 import SetupPrompt from "../components/SetupPrompt";
 import StreakCalendar from "../components/progress/StreakCalendar";
 
 function Progress() {
+  usePageTitle("Progress");
   const [profile] = useUserData("profile", null);
   const [history] = useUserData("history", []);
   const [now] = useState(() => new Date());

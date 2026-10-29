@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LOCATIONS } from "../data/exercises";
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useUserData } from "../hooks/useUserData";
 import {
   DAY_TYPES,
@@ -17,6 +18,7 @@ import {
 const STEPS = ["Experience", "Where", "Availability", "Your plan"];
 
 function Onboarding() {
+  usePageTitle("Set up your plan");
   const navigate = useNavigate();
   const [profile, setProfile] = useUserData("profile", null);
   const [step, setStep] = useState(0);

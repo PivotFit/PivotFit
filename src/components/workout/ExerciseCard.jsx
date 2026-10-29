@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { EXERCISES_BY_ID, PATTERNS, WEIGHTED_EQUIPMENT } from "../../data/exercises";
+import { logFieldError } from "../../lib/logValidation";
 
 const HOLD_MS = 600;
 const MOVE_TOLERANCE_PX = 10;
@@ -10,8 +11,20 @@ function ExerciseCard({ item, backups, lastWeight, onChange, onSwap }) {
   const exercise = EXERCISES_BY_ID[item.exerciseId];
   const pattern = PATTERNS[item.pattern];
   const weighted = exercise.equipment.some((e) => WEIGHTED_EQUIPMENT.includes(e));
-  const unitLabel = exercise.unit === "seconds" ? "Seconds" : "Reps";
+  const timed = exercise.unit === "seconds";
+  const unitLabel = timed ? "Seconds" : "Reps";
   const finished = item.done || item.skipped;
+
+  const errorId = useId();
+  const errors = {
+    sets: logFieldError("sets", item.log.sets),
+    reps: logFieldError(timed ? "seconds" : "reps", item.log.reps),
+    weight: weighted ? logFieldError("weight", item.log.weight) : "",
+  };
+  const hasErrors = Object.values(errors).some(Boolean);
+  // Props linking an input to its error message for screen readers.
+  const errorProps = (field) =>
+    errors[field] ? { "aria-invalid": true, "aria-describedby": `${errorId}-${field}` } : {};
 
   const [holding, setHolding] = useState(false);
   const holdTimer = useRef(null);
@@ -90,42 +103,60 @@ function ExerciseCard({ item, backups, lastWeight, onChange, onSwap }) {
       {!finished && (
         <>
           <div className="log-fields">
+            {/* Text inputs with a numeric keypad: type="number" silently drops
+                partial entries like "-", which would hide invalid values. */}
             <label>
               Sets
               <input
-                type="number"
+                type="text"
                 inputMode="numeric"
-                min="0"
+                autoComplete="off"
                 placeholder={String(item.sets)}
                 value={item.log.sets}
                 onChange={(e) => updateLog("sets", e.target.value)}
+                {...errorProps("sets")}
               />
             </label>
             <label>
               {unitLabel}
               <input
-                type="number"
+                type="text"
                 inputMode="numeric"
-                min="0"
+                autoComplete="off"
                 placeholder={item.reps.replace(" s", "")}
                 value={item.log.reps}
                 onChange={(e) => updateLog("reps", e.target.value)}
+                {...errorProps("reps")}
               />
             </label>
             {weighted && (
               <label>
                 Weight (lb)
                 <input
-                  type="number"
+                  type="text"
                   inputMode="decimal"
-                  min="0"
+                  autoComplete="off"
                   placeholder={lastWeight ? `Last: ${lastWeight}` : "lb"}
                   value={item.log.weight}
                   onChange={(e) => updateLog("weight", e.target.value)}
+                  {...errorProps("weight")}
                 />
               </label>
             )}
           </div>
+
+          {hasErrors && (
+            <div className="log-errors" role="alert">
+              {Object.entries(errors).map(
+                ([field, message]) =>
+                  message && (
+                    <p key={field} id={`${errorId}-${field}`} className="form-error">
+                      {message}
+                    </p>
+                  ),
+              )}
+            </div>
+          )}
 
           {backups.length > 0 && (
             <p className="backups muted">
@@ -152,6 +183,7 @@ function ExerciseCard({ item, backups, lastWeight, onChange, onSwap }) {
             <button
               type="button"
               className="primary-button"
+              disabled={hasErrors}
               onClick={() => onChange({ done: true })}
             >
               Done

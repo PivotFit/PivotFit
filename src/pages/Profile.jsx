@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { LOCATIONS } from "../data/exercises";
 import { supabase } from "../lib/supabaseClient";
 import { useAuth } from "../auth/AuthContext";
+import { usePageTitle } from "../hooks/usePageTitle";
 import { useUserData } from "../hooks/useUserData";
 import { DAYS, EXPERIENCE_LEVELS } from "../lib/training";
 import { clearUserData } from "../lib/userData";
 
 function Profile() {
+  usePageTitle("Profile");
   const { user } = useAuth();
   const [profile] = useUserData("profile", null);
   const [error, setError] = useState("");
