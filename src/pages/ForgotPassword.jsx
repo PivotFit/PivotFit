@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { CAPTCHA_ENABLED } from "../lib/captcha";
 import { supabase } from "../lib/supabaseClient";
 import AuthLayout from "../components/AuthLayout";
+import Captcha from "../components/Captcha";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaReset, setCaptchaReset] = useState(0);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -16,9 +20,11 @@ function ForgotPassword() {
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/reset-password`,
+      captchaToken: captchaToken ?? undefined,
     });
 
     setSubmitting(false);
+    setCaptchaReset((n) => n + 1); // tokens are single-use
     if (error) {
       setError(error.message);
       return;
@@ -56,9 +62,11 @@ function ForgotPassword() {
           />
         </label>
 
+        {CAPTCHA_ENABLED && <Captcha onToken={setCaptchaToken} resetSignal={captchaReset} />}
+
         {error && <p className="form-error" role="alert">{error}</p>}
 
-        <button className="primary-button" disabled={submitting}>
+        <button className="primary-button" disabled={submitting || (CAPTCHA_ENABLED && !captchaToken)}>
           {submitting ? "Sending…" : "Send reset link"}
         </button>
       </form>

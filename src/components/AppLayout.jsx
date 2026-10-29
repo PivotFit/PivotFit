@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 import logo from "../assets/logo.svg";
 
@@ -10,10 +10,10 @@ function AppLayout() {
   return (
     <div className="app">
       <header className="navbar">
-        <div className="brand">
+        <Link to="/" className="brand" aria-label="PivotFit home">
           <img className="brand-mark" src={logo} alt="" />
           <span>PivotFit</span>
-        </div>
+        </Link>
 
         <nav className="nav-links">
           <NavLink to="/" end className={navClass}>
@@ -22,7 +22,9 @@ function AppLayout() {
           <NavLink to="/plan" className={navClass}>
             Workouts
           </NavLink>
-          <button className="nav-link">Progress</button>
+          <NavLink to="/progress" className={navClass}>
+            Progress
+          </NavLink>
           <NavLink to="/profile" className={navClass}>
             Profile
           </NavLink>

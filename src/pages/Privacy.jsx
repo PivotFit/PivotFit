@@ -88,7 +88,13 @@ function Privacy() {
           database storage.
         </li>
         <li>
-          <strong>Vercel</strong>: website hosting and delivery.
+          <strong>Railway</strong>: website hosting and delivery.
+        </li>
+        <li>
+          <strong>Cloudflare Turnstile</strong>: bot protection on sign-up,
+          login, and password reset. It processes technical information such
+          as your IP address and browser characteristics to tell people apart
+          from automated bots.
         </li>
       </ul>
       <p>

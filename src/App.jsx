@@ -12,6 +12,7 @@ import Onboarding from "./pages/Onboarding";
 import Plan from "./pages/Plan";
 import Privacy from "./pages/Privacy";
 import Profile from "./pages/Profile";
+import Progress from "./pages/Progress";
 import ResetPassword from "./pages/ResetPassword";
 import Signup from "./pages/Signup";
 import Terms from "./pages/Terms";
@@ -47,6 +48,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/plan" element={<Plan />} />
+              <Route path="/progress" element={<Progress />} />
               <Route path="/workout/:day" element={<Workout />} />
             </Route>
           </Route>

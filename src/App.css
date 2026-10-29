@@ -319,6 +319,11 @@ a.nav-link.active {
   color: #a99cf7;
 }
 
+/* Reserve the widget's height so the form doesn't jump when it loads. */
+.captcha {
+  min-height: 65px;
+}
+
 .form-error {
   margin: 0;
   padding: 10px 12px;
@@ -1100,6 +1105,167 @@ a.secondary-button {
   margin: 0;
 }
 
+/* ---------- Progress: streak calendar ---------- */
+.streak-stats {
+  margin: 0 0 16px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.calendar-nav {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #343c49;
+  border-radius: 10px;
+  background: #1b222d;
+  color: #f5f7fa;
+  font: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.calendar-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.calendar-grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+}
+
+.calendar-grid th {
+  padding-bottom: 4px;
+  color: #929baa;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.calendar-grid abbr {
+  text-decoration: none;
+}
+
+.cal-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  aspect-ratio: 1;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #d4d9e1;
+  font-size: 0.9rem;
+}
+
+.cal-mark {
+  min-height: 0.8em;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.cal-day.done {
+  background: #1d3b2c;
+  color: #b9e8cf;
+}
+
+.cal-day.made-up {
+  border: 1px dashed #3f8f66;
+  color: #b9e8cf;
+}
+
+.cal-day.planned {
+  border-color: #6c5ce7;
+}
+
+.cal-day.missed {
+  border-color: #7a2d36;
+  background: #2a1519;
+  color: #ff8a95;
+}
+
+.cal-day.rest {
+  color: #6b7482;
+}
+
+.cal-day.none {
+  color: #3b4350;
+}
+
+.cal-day.today {
+  box-shadow: 0 0 0 2px #f5f7fa;
+  font-weight: 800;
+}
+
+.calendar-summary {
+  margin: 16px 0 12px;
+  color: #929baa;
+}
+
+.calendar-summary strong {
+  color: #f5f7fa;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #929baa;
+  font-size: 0.8rem;
+}
+
+.calendar-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cal-swatch {
+  width: 14px;
+  height: 14px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.cal-swatch.done {
+  background: #1d3b2c;
+}
+
+.cal-swatch.made-up {
+  border: 1px dashed #3f8f66;
+}
+
+.cal-swatch.planned {
+  border-color: #6c5ce7;
+}
+
+.cal-swatch.missed {
+  border-color: #7a2d36;
+  background: #2a1519;
+}
+
+.cal-swatch.rest {
+  border-color: #343c49;
+}
+
 @media (max-width: 700px) {
   .navbar {
     align-items: flex-start;
@@ -1221,5 +1387,54 @@ a.secondary-button {
   .nav-link {
     padding: 8px 6px;
     font-size: 0.85rem;
+  }
+
+  .calendar-card {
+    padding: 16px;
+  }
+
+  .calendar-grid {
+    border-spacing: 2px;
+  }
+
+  .cal-day {
+    border-radius: 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Progress stats: compact side-by-side tiles on phones. Placed last so it
+   overrides the single-column .dashboard-grid rule above. */
+@media (max-width: 700px) {
+  .streak-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .streak-stats .stat-card {
+    min-height: 0;
+    padding: 14px 10px;
+    justify-content: flex-start;
+  }
+
+  .streak-stats .eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .streak-stats .stat-card strong {
+    font-size: 1.6rem;
+  }
+
+  .streak-stats .stat-card span {
+    font-size: 0.75rem;
+  }
+}
+
+/* Login/signup card: slimmer side padding on phones so the Cloudflare check
+   (300px minimum) fits without widening the page. */
+@media (max-width: 420px) {
+  .auth-card {
+    padding: 28px 16px;
   }
 }
