@@ -4,6 +4,7 @@ import { CAPTCHA_ENABLED } from "../lib/captcha";
 import { supabase } from "../lib/supabaseClient";
 import AuthLayout from "../components/AuthLayout";
 import Captcha from "../components/Captcha";
+import SpamFolderNote from "../components/SpamFolderNote";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -38,6 +39,7 @@ function ForgotPassword() {
         title="Check your email"
         subtitle={`If an account exists for ${email}, we sent a link to reset your password.`}
       >
+        <SpamFolderNote />
         <div className="auth-links">
           <Link to="/login">Back to log in</Link>
         </div>

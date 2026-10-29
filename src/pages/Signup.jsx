@@ -5,6 +5,7 @@ import { supabase } from "../lib/supabaseClient";
 import { TERMS_VERSION } from "../lib/legal";
 import AuthLayout from "../components/AuthLayout";
 import Captcha from "../components/Captcha";
+import SpamFolderNote from "../components/SpamFolderNote";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -58,6 +59,7 @@ function Signup() {
         title="Check your email"
         subtitle={`We sent a confirmation link to ${email}. Click it to finish creating your account.`}
       >
+        <SpamFolderNote />
         <div className="auth-links">
           <Link to="/login">Back to log in</Link>
         </div>

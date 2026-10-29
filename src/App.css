@@ -319,6 +319,11 @@ a.nav-link.active {
   color: #a99cf7;
 }
 
+.spam-note {
+  margin: 0;
+  line-height: 1.5;
+}
+
 /* Reserve the widget's height so the form doesn't jump when it loads. */
 .captcha {
   min-height: 65px;
