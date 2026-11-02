@@ -12,6 +12,7 @@ import {
   weekStats,
 } from "../lib/training";
 import SetupPrompt from "../components/SetupPrompt";
+import WeekStrip from "../components/dashboard/WeekStrip";
 
 function isSameDay(a, b) {
   return a.toDateString() === b.toDateString();
@@ -47,7 +48,6 @@ function Dashboard() {
     (h) => h.day === todayKey(now) && isSameDay(new Date(h.date), now),
   );
   const featured = nextPlanDay(plan, now, { skipToday: doneToday });
-  const upNext = featured && nextPlanDay(plan, now, { skipToday: true });
   const stats = weekStats(history, plan, now);
 
   return (
@@ -101,35 +101,29 @@ function Dashboard() {
         )
       )}
 
-           <section className="dashboard-grid">
-        <article className="stat-card">
-          <Link to="/progress" className="icon-button" aria-label="View progress">
-            ↗
-          </Link>
-          <p className="eyebrow">THIS WEEK</p>
-          <strong>{stats.completed}</strong>
-          <span>Workouts completed</span>
-        </article>
-
-        <article className="stat-card">
-          <Link to="/progress" className="icon-button" aria-label="View progress">
-            ↗
-          </Link>
-          <p className="eyebrow">CONSISTENCY</p>
+              <section className="workout-card consistency-card" aria-labelledby="consistency-title">
+        <div className="consistency-header">
+          <p className="eyebrow" id="consistency-title">CONSISTENCY</p>
           <strong>{stats.consistency}%</strong>
-          <span>
-            Weekly goal: {stats.planned} {stats.planned === 1 ? "workout" : "workouts"}
-          </span>
-        </article>
+        </div>
+        <div
+          className="progress-track"
+          role="progressbar"
+          aria-labelledby="consistency-title"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={stats.consistency}
+          aria-valuetext={`${stats.consistency}%, ${stats.completed} of ${stats.planned} workouts this week`}
+        >
+          <div className="progress-fill" style={{ width: `${stats.consistency}%` }} />
+        </div>
+        <p className="consistency-note">
+          {stats.completed} of {stats.planned} planned {stats.planned === 1 ? "workout" : "workouts"} done
+          this week
+        </p>
+      
 
-        <article className="stat-card">
-          <Link to="/plan" className="icon-button" aria-label="View weekly plan">
-            ↗
-          </Link>
-          <p className="eyebrow">NEXT UP</p>
-          <strong>{upNext ? DAY_TYPES[upNext.type].label : "—"}</strong>
-          <span>{upNext ? upNext.when : "Nothing planned"}</span>
-        </article>
+      <WeekStrip profile={profile} plan={plan} history={history} now={now} />
       </section>
 
       <p className="dashboard-footnote">

@@ -14,8 +14,36 @@
 
 .app {
   min-height: 100vh;
+  position: relative;
+  isolation: isolate;
   background: #0d1117;
   color: #f5f7fa;
+}
+
+/* Background glows: purple upper-right, soft grey lower-left, darker toward the bottom.
+   Fixed, so they stay put while the page scrolls. */
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 100% 0%, rgba(108, 92, 231, 0.28), transparent 70%),
+    radial-gradient(55% 50% at 0% 100%, rgba(146, 155, 170, 0.14), transparent 70%),
+    linear-gradient(180deg, rgba(13, 17, 23, 0) 0%, rgba(8, 10, 14, 0.6) 100%);
+}
+
+/* Film grain*/
+.app::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .navbar {
@@ -24,8 +52,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #252b35;
-  background: #11161e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(17, 22, 30, 0.55);
+  backdrop-filter: blur(14px);
+  position: relative;
+  z-index: 30;
 }
 
 .brand {
@@ -1528,3 +1559,189 @@ a.secondary-button {
   outline: 2px solid #a99bff;
   outline-offset: 3px;
 }
+
+
+/* ---------- Dashboard: consistency bar ---------- */
+.consistency-card {
+  margin-top: 16px;
+  padding: 24px 32px;
+}
+
+.consistency-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.consistency-header .eyebrow {
+  margin: 0;
+}
+
+.consistency-header strong {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.progress-track {
+  height: 12px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: #232b37;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6c5ce7, #a99bff);
+  transition: width 0.4s ease;
+}
+
+.consistency-note {
+  margin: 12px 0 0;
+  color: #929baa;
+  font-size: 0.9rem;
+}
+
+
+
+/* ---------- Dashboard: week view ---------- */
+.week-card {
+  margin-top: 16px;
+  padding: 24px 32px;
+}
+
+.week-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.week-card-header .eyebrow {
+  margin: 0;
+}
+
+.week-range {
+  color: #929baa;
+  font-size: 0.9rem;
+}
+
+.week-strip {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.week-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 4px;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: #1b222d;
+  color: #d4d9e1;
+}
+
+.week-day-name {
+  color: #929baa;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.week-day-date {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.week-day-mark {
+  min-height: 1em;
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.week-day-type {
+  font-size: 0.7rem;
+  color: #929baa;
+}
+
+/* Completed: filled green, matching the Progress calendar */
+.week-day.done,
+.week-day.made-up {
+  background: #1d3b2c;
+  color: #b9e8cf;
+}
+
+.week-day.made-up {
+  border: 1px dashed #3f8f66;
+}
+
+.week-day.done .week-day-name,
+.week-day.done .week-day-type,
+.week-day.made-up .week-day-name,
+.week-day.made-up .week-day-type {
+  color: #b9e8cf;
+}
+
+.week-day.planned {
+  border-color: #6c5ce7;
+}
+
+.week-day.missed {
+  border-color: #7a2d36;
+  background: #2a1519;
+  color: #ff8a95;
+}
+
+.week-day.rest,
+.week-day.none {
+  background: transparent;
+}
+
+.week-day.today {
+  box-shadow: 0 0 0 2px #f5f7fa;
+}
+
+/* Hidden on screen, still read by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .consistency-card,
+  .week-card {
+    padding: 20px;
+  }
+
+  .week-strip {
+    gap: 4px;
+  }
+
+  .week-day {
+    padding: 10px 2px;
+    border-radius: 14px;
+  }
+
+  .week-day-date {
+    font-size: 1rem;
+  }
+}
+
+@media
