@@ -105,7 +105,7 @@
 .workout-card {
   padding: 32px;
   border: 1px solid #292f3a;
-  border-radius: 18px;
+  border-radius: 26px;
   background: #151b24;
 }
 
@@ -145,7 +145,7 @@
 .primary-button {
   width: 100%;
   border: 0;
-  border-radius: 10px;
+  border-radius: 999px;
   padding: 15px 20px;
   background: #6c5ce7;
   color: white;
@@ -172,7 +172,7 @@
   flex-direction: column;
   justify-content: center;
   border: 1px solid #292f3a;
-  border-radius: 14px;
+  border-radius: 22px;
   background: #151b24;
 }
 
@@ -211,7 +211,7 @@ a.nav-link.active {
 
 .secondary-button,
 .danger-button {
-  border-radius: 10px;
+  border-radius: 999px;
   padding: 12px 20px;
   font: inherit;
   font-weight: 700;
@@ -249,7 +249,7 @@ a.nav-link.active {
   width: min(440px, 100%);
   padding: 36px 32px;
   border: 1px solid #292f3a;
-  border-radius: 18px;
+  border-radius: 26px;
   background: #151b24;
 }
 
@@ -578,7 +578,7 @@ a.secondary-button {
   gap: 8px;
   padding: 24px 16px;
   border: 1px solid #292f3a;
-  border-radius: 14px;
+  border-radius: 22px;
   background: #151b24;
   color: #f5f7fa;
   text-align: center;
@@ -725,7 +725,7 @@ a.secondary-button {
   gap: 16px;
   padding: 24px;
   border: 1px solid #292f3a;
-  border-radius: 14px;
+  border-radius: 22px;
   background: #151b24;
 }
 
@@ -833,7 +833,7 @@ a.secondary-button {
   overflow: hidden;
   padding: 20px;
   border: 1px solid #292f3a;
-  border-radius: 14px;
+  border-radius: 22px;
   background: #151b24;
   touch-action: manipulation;
   /* Long-press means "swap", not "select text" or open the callout menu. */
