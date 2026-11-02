@@ -55,7 +55,7 @@ function Dashboard() {
       {welcome}
 
       {session ? (
-        <section className="workout-card">
+        <section className="workout-card hero-card">
           <div className="workout-card-header">
             <div>
               <p className="eyebrow">IN PROGRESS</p>
@@ -75,7 +75,7 @@ function Dashboard() {
         </section>
       ) : (
         featured && (
-          <section className="workout-card">
+          <section className="workout-card hero-card">
             <div className="workout-card-header">
               <div>
                 <p className="eyebrow">
@@ -101,14 +101,20 @@ function Dashboard() {
         )
       )}
 
-      <section className="dashboard-grid">
+           <section className="dashboard-grid">
         <article className="stat-card">
+          <Link to="/progress" className="icon-button" aria-label="View progress">
+            ↗
+          </Link>
           <p className="eyebrow">THIS WEEK</p>
           <strong>{stats.completed}</strong>
           <span>Workouts completed</span>
         </article>
 
         <article className="stat-card">
+          <Link to="/progress" className="icon-button" aria-label="View progress">
+            ↗
+          </Link>
           <p className="eyebrow">CONSISTENCY</p>
           <strong>{stats.consistency}%</strong>
           <span>
@@ -117,6 +123,9 @@ function Dashboard() {
         </article>
 
         <article className="stat-card">
+          <Link to="/plan" className="icon-button" aria-label="View weekly plan">
+            ↗
+          </Link>
           <p className="eyebrow">NEXT UP</p>
           <strong>{upNext ? DAY_TYPES[upNext.type].label : "—"}</strong>
           <span>{upNext ? upNext.when : "Nothing planned"}</span>

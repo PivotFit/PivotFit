@@ -8,14 +8,13 @@ html {
   background: #0d1117;
 }
 
-/* Heavy uppercase headings for a bold, Boldon-style look; body text stays
+/* Boldon-style look; body text stays
    regular weight for readability. */
 h1,
 h2 {
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
   overflow-wrap: break-word;
 }
 

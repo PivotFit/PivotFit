@@ -46,10 +46,58 @@
   border-radius: 50%;
 }
 
-.nav-links {
-  display: flex;
+.nav-menu {
+  position: relative;
+}
+
+.menu-button {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #1b222d;
+  color: #f5f7fa;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background: #232b37;
+}
+
+.menu-button[aria-expanded="true"] {
+  background: #e6e8ec;
+  color: #0d1117;
+}
+
+.menu-button:focus-visible {
+  outline: 2px solid #a99bff;
+  outline-offset: 3px;
+}
+
+/* The dropdown that opens under the Menu button */
+.nav-links {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 20;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid #292f3a;
+  border-radius: 20px;
+  background: #151b24;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.nav-links .nav-link {
+  padding: 12px 16px;
+  border-radius: 999px;
 }
 
 /* Links and buttons share this class; inline-flex keeps them the same height
@@ -104,7 +152,7 @@
 
 .workout-card {
   padding: 32px;
-  border: 1px solid #292f3a;
+  border: 1px solid transparent;
   border-radius: 26px;
   background: #151b24;
 }
@@ -125,9 +173,10 @@
 .status-badge {
   padding: 7px 12px;
   border-radius: 999px;
-  background: #232b37;
-  color: #b9c1cc;
+  background: #e6e8ec;
+  color: #0d1117;
   font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .workout-meta {
@@ -171,19 +220,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid #292f3a;
+  border: 1px solid transparent;
   border-radius: 22px;
   background: #151b24;
 }
 
 .stat-card strong {
-  font-size: 1.7rem;
-  margin-bottom: 5px;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 8px;
 }
 
-.stat-card span {
-  color: #929baa;
-  font-size: 0.9rem;
+/* "Next up" holds a word, not a number*/
+.stat-card:last-child strong {
+  font-size: 1.7rem;
+  font-weight: 600;
 }
 
 /* Links styled as nav items / brand */
@@ -248,7 +300,7 @@ a.nav-link.active {
 .auth-card {
   width: min(440px, 100%);
   padding: 36px 32px;
-  border: 1px solid #292f3a;
+  border: 1px solid transparent;
   border-radius: 26px;
   background: #151b24;
 }
@@ -577,7 +629,7 @@ a.secondary-button {
   align-items: center;
   gap: 8px;
   padding: 24px 16px;
-  border: 1px solid #292f3a;
+  border: 1px solid transparent;
   border-radius: 22px;
   background: #151b24;
   color: #f5f7fa;
@@ -643,7 +695,7 @@ a.secondary-button {
   width: 100%;
   height: 48px;
   border: 1px solid #292f3a;
-  border-radius: 10px;
+  border-radius: 999px;
   background: #151b24;
   color: white;
   font-weight: 700;
@@ -724,7 +776,7 @@ a.secondary-button {
   flex-direction: column;
   gap: 16px;
   padding: 24px;
-  border: 1px solid #292f3a;
+  border: 1px solid transparent;
   border-radius: 22px;
   background: #151b24;
 }
@@ -832,7 +884,7 @@ a.secondary-button {
   position: relative;
   overflow: hidden;
   padding: 20px;
-  border: 1px solid #292f3a;
+  border: 1px solid transparent;
   border-radius: 22px;
   background: #151b24;
   touch-action: manipulation;
@@ -1287,29 +1339,7 @@ a.secondary-button {
 }
 
 @media (max-width: 700px) {
-  .navbar {
-    align-items: flex-start;
-    flex-direction: column;
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-  .nav-links {
-    width: 100%;
-    margin-top: 14px;
-    gap: 4px;
-    justify-content: space-between;
-  }
-
-  .nav-link {
-    padding: 9px 10px;
-    font-size: 0.9rem;
-  }
-
-  /* Log out is on the Profile page; dropping it here lets the nav fit. */
-  .nav-logout {
-    display: none;
-  }
+  
 
   .dashboard {
     width: 92%;
@@ -1398,16 +1428,8 @@ a.secondary-button {
   }
 }
 
-@media (max-width: 380px) {
-  .navbar {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .nav-link {
-    padding: 8px 6px;
-    font-size: 0.85rem;
-  }
+@media (max-width: 700px) {
+  
 
   .calendar-card {
     padding: 16px;
@@ -1457,4 +1479,52 @@ a.secondary-button {
   .auth-card {
     padding: 28px 16px;
   }
+}
+
+/* Dashboard's main card */
+.hero-card {
+  background: #6c5ce7;
+  border-color: transparent;
+}
+
+.hero-card .eyebrow {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-card .workout-meta {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-card .primary-button {
+  background: #0d1117;
+  color: #ffffff;
+}
+
+/* Round corner link*/
+.stat-card {
+  position: relative;
+}
+
+.icon-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #232b37;
+  color: #f5f7fa;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.icon-button:hover {
+  background: #343c49;
+}
+
+.icon-button:focus-visible {
+  outline: 2px solid #a99bff;
+  outline-offset: 3px;
 }
