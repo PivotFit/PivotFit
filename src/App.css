@@ -1498,3 +1498,253 @@ a.secondary-button {
   color: var(--text-muted);
   font-weight: 600;
 }
+
+/* --- Shell ------------------------------------------------------------- */
+
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 16px 20px;
+  background: var(--surface-0);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 8px 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.sidebar-brand strong {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-brand small {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.sidebar-nav {
+  flex: 1;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.sidebar-label {
+  margin: 10px 10px 8px;
+  color: var(--text-faint);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.side-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.side-link:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.side-link.active {
+  color: var(--text);
+  background: var(--surface-3);
+  box-shadow: inset 0 0 0 1px var(--border-hover);
+}
+
+.side-link.active svg {
+  color: var(--accent);
+}
+
+.sidebar-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 16px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+
+.sidebar-cta:hover {
+  filter: brightness(1.06);
+}
+
+.shell-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell-main > main {
+  flex: 1;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px clamp(20px, 4vw, 40px) 0;
+}
+
+.topbar-brand {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.topbar-brand .brand-mark {
+  width: 32px;
+  height: 32px;
+}
+
+.topbar-date {
+  margin: 0 auto 0 0;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(140deg, var(--accent), var(--accent-strong));
+  color: var(--accent-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.app-shell .dashboard {
+  width: auto;
+  max-width: 1240px;
+  margin: 0;
+  padding: 28px clamp(20px, 4vw, 40px) 48px;
+}
+
+.app-shell .site-footer {
+  padding-left: clamp(20px, 4vw, 40px);
+  padding-right: clamp(20px, 4vw, 40px);
+  justify-content: flex-start;
+}
+
+.tab-bar {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .topbar-brand {
+    display: inline-flex;
+  }
+
+  .topbar-date {
+    display: none;
+  }
+
+  .topbar {
+    justify-content: space-between;
+    padding-top: 14px;
+  }
+
+  .tab-bar {
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface-0) 92%, transparent);
+    backdrop-filter: blur(12px);
+  }
+
+  .tab-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 4px;
+    border-radius: 12px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-decoration: none;
+  }
+
+  .tab-link.active {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+
+  .tab-link.active svg {
+    color: var(--accent);
+  }
+
+  .app-shell .dashboard {
+    padding-top: 20px;
+  }
+}
