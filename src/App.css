@@ -6,16 +6,16 @@
 .starter-workout fieldset { border: 0; padding: 0; margin: 20px 0; min-width: 0; }
 .starter-workout legend { font-weight: 700; margin-bottom: 12px; }
 .starter-options { display: flex; flex-wrap: wrap; gap: 12px; }
-.starter-option { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid #526075; border-radius: 8px; cursor: pointer; }
-.starter-option:has(input:checked) { border-color: #a99bff; background: #30294f; }
-.starter-option input { accent-color: #a99bff; }
+.starter-option { display: flex; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--border-strong); border-radius: 8px; cursor: pointer; }
+.starter-option:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.starter-option input { accent-color: var(--accent); }
 .starter-minutes { display: block; width: min(100%, 200px); box-sizing: border-box; margin-top: 10px; padding: 12px; font: inherit; }
-.starter-option:focus-within { outline: 2px solid #a99bff; outline-offset: 3px; }
+.starter-option:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .app {
   min-height: 100vh;
-  background: #0d1117;
-  color: #f5f7fa;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .navbar {
@@ -24,8 +24,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #252b35;
-  background: #11161e;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-0);
 }
 
 .brand {
@@ -59,7 +59,7 @@
   align-items: center;
   border: 0;
   background: transparent;
-  color: #929baa;
+  color: var(--text-muted);
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
@@ -71,7 +71,7 @@
 .nav-link:hover,
 .nav-link.active {
   color: #ffffff;
-  background: #1b222d;
+  background: var(--surface-2);
 }
 
 .dashboard {
@@ -86,7 +86,7 @@
 
 .eyebrow {
   margin: 0 0 8px;
-  color: #8d7df2;
+  color: var(--accent-text);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -98,15 +98,15 @@
 }
 
 .welcome > p:last-child {
-  color: #929baa;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .workout-card {
   padding: 32px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 18px;
-  background: #151b24;
+  background: var(--surface);
 }
 
 .workout-card-header {
@@ -125,7 +125,7 @@
 .status-badge {
   padding: 7px 12px;
   border-radius: 999px;
-  background: #232b37;
+  background: var(--surface-2);
   color: #b9c1cc;
   font-size: 0.8rem;
 }
@@ -135,7 +135,7 @@
   flex-wrap: wrap;
   gap: 4px 9px;
   margin: 12px 0 28px;
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 .workout-meta span {
@@ -145,10 +145,10 @@
 .primary-button {
   width: 100%;
   border: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 15px 20px;
-  background: #6c5ce7;
-  color: white;
+  background: var(--accent);
+  color: var(--accent-ink);
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -171,9 +171,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #151b24;
+  background: var(--surface);
 }
 
 .stat-card strong {
@@ -182,7 +182,7 @@
 }
 
 .stat-card span {
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -194,7 +194,7 @@ a.brand {
 }
 
 a.nav-link {
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 a.nav-link:hover,
@@ -219,9 +219,9 @@ a.nav-link.active {
 }
 
 .secondary-button {
-  border: 1px solid #343c49;
-  background: #1b222d;
-  color: #f5f7fa;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text);
 }
 
 .danger-button {
@@ -233,8 +233,8 @@ a.nav-link.active {
 .loading {
   margin: 0;
   padding: 72px 6%;
-  color: #929baa;
-  background: #0d1117;
+  color: var(--text-muted);
+  background: var(--bg);
   min-height: 100vh;
 }
 
@@ -248,9 +248,9 @@ a.nav-link.active {
 .auth-card {
   width: min(440px, 100%);
   padding: 36px 32px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 18px;
-  background: #151b24;
+  background: var(--surface);
 }
 
 .auth-brand {
@@ -264,7 +264,7 @@ a.nav-link.active {
 
 .auth-subtitle {
   margin: 0 0 24px;
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 .auth-form {
@@ -284,14 +284,14 @@ a.nav-link.active {
 .auth-form input[type="email"],
 .auth-form input[type="password"] {
   padding: 12px 14px;
-  border: 1px solid #343c49;
+  border: 1px solid var(--border-strong);
   border-radius: 10px;
-  background: #0d1117;
-  color: #f5f7fa;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .auth-form input:focus-visible {
-  outline: 2px solid #8d7df2;
+  outline: 2px solid var(--accent-text);
   outline-offset: 1px;
 }
 
@@ -304,19 +304,19 @@ a.nav-link.active {
 
 .checkbox-row input {
   margin-top: 3px;
-  accent-color: #6c5ce7;
+  accent-color: var(--accent-strong);
 }
 
 .checkbox-hint {
   display: block;
-  color: #8a93a2; /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
+  color: var(--text-muted); /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
   font-size: 0.8rem;
 }
 
 .auth-card a,
 .legal a,
 .site-footer a {
-  color: #a99cf7;
+  color: var(--accent);
 }
 
 .spam-note {
@@ -343,7 +343,7 @@ a.nav-link.active {
   flex-direction: column;
   gap: 8px;
   margin-top: 20px;
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -366,7 +366,7 @@ h2.profile-value {
 }
 
 .danger-zone > p:not(.eyebrow) {
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 /* Footer */
@@ -389,14 +389,14 @@ h2.profile-value {
 
 .legal h1 {
   margin: 0 0 6px;
-  color: #f5f7fa;
+  color: var(--text);
   font-size: clamp(2rem, 5vw, 2.8rem);
 }
 
 /* Long section titles read better in normal case. */
 .legal h2 {
   margin: 36px 0 10px;
-  color: #f5f7fa;
+  color: var(--text);
   font-size: 1.2rem;
   font-weight: 800;
   text-transform: none;
@@ -404,7 +404,7 @@ h2.profile-value {
 
 .legal-updated {
   margin: 0 0 28px;
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -435,12 +435,12 @@ h2.profile-value {
 }
 
 .config-error p {
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 /* ---------- Shared page pieces ---------- */
 .muted {
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 .page-title {
@@ -450,7 +450,7 @@ h2.profile-value {
 
 .page-subtitle {
   margin: 0 0 28px;
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 a.primary-button,
@@ -461,7 +461,8 @@ a.secondary-button {
 }
 
 a.primary-button {
-  color: white;
+  display: flex;
+  color: var(--accent-ink);
 }
 
 a.secondary-button {
@@ -471,7 +472,7 @@ a.secondary-button {
 .text-button {
   border: 0;
   background: transparent;
-  color: #a99cf7;
+  color: var(--accent);
   padding: 10px 4px;
   font: inherit;
   cursor: pointer;
@@ -523,7 +524,7 @@ a.secondary-button {
 }
 
 .dashboard-footnote a {
-  color: #a99cf7;
+  color: var(--accent);
 }
 
 /* ---------- Onboarding ---------- */
@@ -542,19 +543,19 @@ a.secondary-button {
 .stepper li {
   flex: 1;
   padding-top: 10px;
-  border-top: 3px solid #252b35;
-  color: #8a93a2; /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
+  border-top: 3px solid var(--border);
+  color: var(--text-muted); /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
   font-size: 0.8rem;
 }
 
 .stepper li.complete {
-  border-color: #6c5ce7;
-  color: #929baa;
+  border-color: var(--accent-strong);
+  color: var(--text-muted);
 }
 
 .stepper li.current {
-  border-color: #8d7df2;
-  color: #f5f7fa;
+  border-color: var(--accent-text);
+  color: var(--text);
   font-weight: 700;
 }
 
@@ -577,39 +578,39 @@ a.secondary-button {
   align-items: center;
   gap: 8px;
   padding: 24px 16px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #151b24;
-  color: #f5f7fa;
+  background: var(--surface);
+  color: var(--text);
   text-align: center;
   cursor: pointer;
 }
 
 .choice-card span:not(.choice-dot) {
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
 .choice-card:hover {
-  border-color: #3b4350;
+  border-color: var(--border-hover);
 }
 
 .choice-card[aria-checked="true"] {
-  border-color: #8d7df2;
-  background: #1c1a33;
-  box-shadow: 0 0 0 1px #8d7df2;
+  border-color: var(--accent-text);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 1px var(--accent-text);
 }
 
 .choice-dot {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #2a313d;
+  background: var(--surface-3);
 }
 
 .choice-card[aria-checked="true"] .choice-dot {
-  background: #6c5ce7;
-  box-shadow: inset 0 0 0 8px #2a2461;
+  background: var(--accent-strong);
+  box-shadow: inset 0 0 0 8px var(--accent-soft-2);
 }
 
 .availability-scroll {
@@ -625,7 +626,7 @@ a.secondary-button {
 }
 
 .availability-grid th {
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -642,21 +643,21 @@ a.secondary-button {
 .slot-button {
   width: 100%;
   height: 48px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: #151b24;
+  background: var(--surface);
   color: white;
   font-weight: 700;
   cursor: pointer;
 }
 
 .slot-button:hover {
-  border-color: #3b4350;
+  border-color: var(--border-hover);
 }
 
 .slot-button[aria-pressed="true"] {
-  border-color: #8d7df2;
-  background: #6c5ce7;
+  border-color: var(--accent-text);
+  background: var(--accent-strong);
 }
 
 .duration-list {
@@ -670,7 +671,7 @@ a.secondary-button {
   gap: 12px;
   flex-wrap: wrap;
   padding: 14px 0;
-  border-bottom: 1px solid #252b35;
+  border-bottom: 1px solid var(--border);
 }
 
 .segmented {
@@ -678,7 +679,7 @@ a.secondary-button {
   gap: 4px;
   padding: 4px;
   border-radius: 10px;
-  background: #151b24;
+  background: var(--surface);
 }
 
 .segmented button {
@@ -686,14 +687,14 @@ a.secondary-button {
   border-radius: 7px;
   padding: 8px 12px;
   background: transparent;
-  color: #929baa;
+  color: var(--text-muted);
   font: inherit;
   font-size: 0.85rem;
   cursor: pointer;
 }
 
 .segmented button[aria-checked="true"] {
-  background: #6c5ce7;
+  background: var(--accent-strong);
   color: white;
   font-weight: 700;
 }
@@ -709,7 +710,7 @@ a.secondary-button {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 12px;
   padding: 16px 0;
-  border-bottom: 1px solid #252b35;
+  border-bottom: 1px solid var(--border);
 }
 
 /* ---------- Weekly plan ---------- */
@@ -724,13 +725,13 @@ a.secondary-button {
   flex-direction: column;
   gap: 16px;
   padding: 24px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #151b24;
+  background: var(--surface);
 }
 
 .day-card.today {
-  border-color: #8d7df2;
+  border-color: var(--accent-text);
 }
 
 .day-card.rest {
@@ -756,7 +757,7 @@ a.secondary-button {
 
 .day-card-type {
   margin: 4px 0 0;
-  color: #a99cf7;
+  color: var(--accent);
   font-size: 0.9rem;
 }
 
@@ -772,7 +773,7 @@ a.secondary-button {
   justify-content: space-between;
   gap: 12px;
   padding: 8px 0;
-  border-bottom: 1px solid #222833;
+  border-bottom: 1px solid var(--surface-2);
   font-size: 0.9rem;
 }
 
@@ -789,7 +790,7 @@ a.secondary-button {
   flex-shrink: 0;
   padding: 5px 10px;
   border-radius: 999px;
-  background: #232b37;
+  background: var(--surface-2);
   color: #d4d9e1;
   font-size: 0.85rem;
   font-weight: 700;
@@ -810,9 +811,9 @@ a.secondary-button {
 .program-item {
   padding: 18px 20px;
   margin-bottom: 10px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #151b24;
+  background: var(--surface);
 }
 
 .program-item-main {
@@ -832,9 +833,9 @@ a.secondary-button {
   position: relative;
   overflow: hidden;
   padding: 20px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #151b24;
+  background: var(--surface);
   touch-action: manipulation;
   /* Long-press means "swap", not "select text" or open the callout menu. */
   user-select: none;
@@ -855,7 +856,7 @@ a.secondary-button {
   bottom: 0;
   height: 4px;
   width: 100%;
-  background: #8d7df2;
+  background: var(--accent-text);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -866,7 +867,7 @@ a.secondary-button {
 }
 
 .exercise-card.holding {
-  border-color: #8d7df2;
+  border-color: var(--accent-text);
 }
 
 .exercise-card.done {
@@ -901,7 +902,7 @@ a.secondary-button {
 
 .swap-note {
   margin: 6px 0 0;
-  color: #a99cf7;
+  color: var(--accent);
   font-size: 0.85rem;
 }
 
@@ -916,17 +917,17 @@ a.secondary-button {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.8rem;
 }
 
 .log-fields input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #343c49;
+  border: 1px solid var(--border-strong);
   border-radius: 8px;
-  background: #0d1117;
-  color: #f5f7fa;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .log-fields input[aria-invalid="true"] {
@@ -963,7 +964,7 @@ a.secondary-button {
 
 .hold-hint {
   margin: 10px 0 0;
-  color: #8a93a2; /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
+  color: var(--text-muted); /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
   font-size: 0.75rem;
   text-align: right;
 }
@@ -984,9 +985,9 @@ a.secondary-button {
   max-height: calc(100vh - 32px);
   overflow-y: auto;
   padding: 28px 24px 20px;
-  border: 1px solid #343c49;
+  border: 1px solid var(--border-strong);
   border-radius: 18px;
-  background: #151b24;
+  background: var(--surface);
 }
 
 .swap-panel h2 {
@@ -1015,10 +1016,10 @@ a.secondary-button {
   align-items: flex-start;
   gap: 4px;
   padding: 14px 16px;
-  border: 1px solid #343c49;
+  border: 1px solid var(--border-strong);
   border-radius: 12px;
-  background: #1b222d;
-  color: #f5f7fa;
+  background: var(--surface-2);
+  color: var(--text);
   font: inherit;
   text-align: left;
   cursor: pointer;
@@ -1026,7 +1027,7 @@ a.secondary-button {
 
 .swap-options button:hover,
 .swap-options button:focus-visible {
-  border-color: #8d7df2;
+  border-color: var(--accent-text);
 }
 
 .swap-options .muted {
@@ -1074,7 +1075,7 @@ a.secondary-button {
   gap: 12px;
   flex-wrap: wrap;
   padding: 12px 0;
-  border-bottom: 1px solid #252b35;
+  border-bottom: 1px solid var(--border);
 }
 
 .rating-buttons {
@@ -1085,17 +1086,17 @@ a.secondary-button {
 .rating-buttons button {
   width: 44px;
   height: 44px;
-  border: 1px solid #292f3a;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: #1b222d;
+  background: var(--surface-2);
   font-size: 1.3rem;
   cursor: pointer;
   filter: grayscale(0.6);
 }
 
 .rating-buttons button[aria-checked="true"] {
-  border-color: #8d7df2;
-  background: #2a2461;
+  border-color: var(--accent-text);
+  background: var(--accent-soft-2);
   filter: none;
 }
 
@@ -1112,13 +1113,13 @@ a.secondary-button {
   display: flex;
   gap: 16px;
   padding: 10px 0;
-  border-bottom: 1px solid #252b35;
+  border-bottom: 1px solid var(--border);
 }
 
 .pref-list dt {
   width: 120px;
   flex-shrink: 0;
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 .pref-list dd {
@@ -1147,10 +1148,10 @@ a.secondary-button {
 .calendar-nav {
   width: 44px;
   height: 44px;
-  border: 1px solid #343c49;
+  border: 1px solid var(--border-strong);
   border-radius: 10px;
-  background: #1b222d;
-  color: #f5f7fa;
+  background: var(--surface-2);
+  color: var(--text);
   font: inherit;
   font-size: 1.4rem;
   line-height: 1;
@@ -1171,7 +1172,7 @@ a.secondary-button {
 
 .calendar-grid th {
   padding-bottom: 4px;
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -1210,7 +1211,7 @@ a.secondary-button {
 }
 
 .cal-day.planned {
-  border-color: #6c5ce7;
+  border-color: var(--accent-strong);
 }
 
 .cal-day.missed {
@@ -1220,7 +1221,7 @@ a.secondary-button {
 }
 
 .cal-day.rest {
-  color: #8a93a2; /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
+  color: var(--text-muted); /* 5.2:1 or better on all app backgrounds (WCAG 1.4.3) */
 }
 
 .cal-day.none {
@@ -1228,17 +1229,17 @@ a.secondary-button {
 }
 
 .cal-day.today {
-  box-shadow: 0 0 0 2px #f5f7fa;
+  box-shadow: 0 0 0 2px var(--text);
   font-weight: 800;
 }
 
 .calendar-summary {
   margin: 16px 0 12px;
-  color: #929baa;
+  color: var(--text-muted);
 }
 
 .calendar-summary strong {
-  color: #f5f7fa;
+  color: var(--text);
 }
 
 .calendar-legend {
@@ -1248,7 +1249,7 @@ a.secondary-button {
   margin: 0;
   padding: 0;
   list-style: none;
-  color: #929baa;
+  color: var(--text-muted);
   font-size: 0.8rem;
 }
 
@@ -1274,7 +1275,7 @@ a.secondary-button {
 }
 
 .cal-swatch.planned {
-  border-color: #6c5ce7;
+  border-color: var(--accent-strong);
 }
 
 .cal-swatch.missed {
@@ -1283,7 +1284,7 @@ a.secondary-button {
 }
 
 .cal-swatch.rest {
-  border-color: #343c49;
+  border-color: var(--border-strong);
 }
 
 @media (max-width: 700px) {
@@ -1457,4 +1458,43 @@ a.secondary-button {
   .auth-card {
     padding: 28px 16px;
   }
+}
+
+/* ==========================================================================
+   BConcept: shared look
+   ========================================================================== */
+
+/* Shared card surfaces pick up the softer, rounder look on every page. */
+.workout-card,
+.stat-card,
+.day-card,
+.exercise-card {
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+.workout-card {
+  border-radius: var(--radius-lg);
+}
+
+.stat-card {
+  border-radius: var(--radius);
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+}
+
+.eyebrow {
+  color: var(--text-muted);
+  font-weight: 600;
 }

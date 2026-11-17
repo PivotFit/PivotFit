@@ -2,20 +2,62 @@
   box-sizing: border-box;
 }
 
+/* Design tokens for the "BConcept" look: soft charcoal surfaces, lavender
+   accent, rounded cards. Every color in App.css goes through these, so a
+   palette change happens here only. */
+:root {
+  color-scheme: dark;
+
+  --bg: #16151b;
+  --surface-0: #1b1a21;
+  --surface: #211f28;
+  --surface-2: #2a2833;
+  --surface-3: #33303d;
+  --border: #2f2c38;
+  --border-hover: #3d3a48;
+  --border-strong: #4a4657;
+
+  --text: #f3f1f8;
+  --text-muted: #9d99ab; /* 6:1+ on every surface above (WCAG 1.4.3) */
+  --text-faint: #807b8f;
+
+  /* Lavender accent. --accent fills buttons (dark text on it); --accent-strong
+     fills selected controls that carry white text (4.6:1). */
+  --accent: #b9a5ff;
+  --accent-ink: #1b1530;
+  --accent-strong: #6c5ce7;
+  --accent-text: #b9a5ff;
+  --accent-soft: #2e2747;
+  --accent-soft-2: #3a3160;
+
+  /* Heatmap / intensity scale, lowest to highest. */
+  --heat-0: #2a2833;
+  --heat-1: #3f3760;
+  --heat-2: #5b4f96;
+  --heat-3: #8873d6;
+  --heat-4: #c3b2ff;
+
+  --positive: #b9a5ff;
+  --negative: #ff8a7a;
+
+  --radius-lg: 22px;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --sidebar-width: 248px;
+}
+
 html {
   font-family:
     "Montserrat Variable", Montserrat, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #0d1117;
+  background: var(--bg);
 }
 
-/* Heavy uppercase headings for a bold, Boldon-style look; body text stays
-   regular weight for readability. */
+/* Clean sentence-case headings with tight tracking. */
 h1,
 h2 {
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   overflow-wrap: break-word;
 }
 
@@ -36,6 +78,6 @@ select {
    purple has 6.7:1+ contrast on every app background. :where() keeps this
    low-priority so components can still customize it. */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 2px solid #a99cf7;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
