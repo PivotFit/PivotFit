@@ -2,8 +2,7 @@
   box-sizing: border-box;
 }
 
-/* Design tokens for the "BConcept" look: soft charcoal surfaces, lavender
-   accent, rounded cards. Every color in App.css goes through these, so a
+/* Design tokens: soft charcoal surfaces, Wisteria Purple accent, rounded cards. Every color in App.css goes through these, so a
    palette change happens here only. */
 :root {
   color-scheme: dark;
@@ -18,10 +17,10 @@
   --border-strong: #4a4657;
 
   --text: #f3f1f8;
-  --text-muted: #9d99ab; /* 6:1+ on every surface above (WCAG 1.4.3) */
+  --text-muted: #9d99ab; 
   --text-faint: #807b8f;
 
-  /* Lavender accent. --accent fills buttons (dark text on it); --accent-strong
+  /* Purple accent. --accent fills buttons (dark text on it); --accent-strong
      fills selected controls that carry white text (4.6:1). */
   --accent: #b9a5ff;
   --accent-ink: #1b1530;
@@ -74,8 +73,7 @@ select {
   font: inherit;
 }
 
-/* One clearly visible keyboard focus ring everywhere (WCAG 2.4.7). The light
-   purple has 6.7:1+ contrast on every app background. :where() keeps this
+/* One clearly visible keyboard focus ring everywhere, where() keeps this
    low-priority so components can still customize it. */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
   outline: 2px solid var(--accent);

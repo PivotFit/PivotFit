@@ -25,24 +25,33 @@ import {
   TargetIcon,
 } from "../components/Icons";
 
-function greetingFor(now) {
+
+
+function greetingFor(now)
+{
   const hour = now.getHours();
   if (hour < 12) return "Good morning,";
   if (hour < 18) return "Good afternoon,";
   return "Good evening,";
 }
 
-function slotLabel(key) {
+
+function slotLabel(key)
+{
   return TIME_SLOTS.find((s) => s.key === key)?.label ?? "";
 }
 
-function relativeDay(offset, date) {
+
+function relativeDay(offset, date)
+{
   if (offset === 0) return "Today";
   if (offset === 1) return "Tomorrow";
   return date.toLocaleDateString(undefined, { weekday: "long" });
 }
 
-function CardHeader({ icon: Icon, title, id, action }) {
+
+function CardHeader({ icon: Icon, title, id, action })
+{
   return (
     <div className="card-head">
       <span className="card-icon">
@@ -54,7 +63,9 @@ function CardHeader({ icon: Icon, title, id, action }) {
   );
 }
 
-function PillLink({ to, children, label }) {
+
+function PillLink({ to, children, label })
+{
   return (
     <Link to={to} className={children ? "pill-link" : "pill-link icon-only"} aria-label={label} title={label}>
       {children}
@@ -63,7 +74,9 @@ function PillLink({ to, children, label }) {
   );
 }
 
-function Delta({ value, unit = "%", suffix = "from last week" }) {
+
+function Delta({ value, unit = "%", suffix = "from last week" })
+{
   if (value === null) return <p className="delta">No data from last week yet</p>;
   const sign = value > 0 ? "+" : "";
   const tone = value > 0 ? "up" : value < 0 ? "down" : "flat";
@@ -79,7 +92,9 @@ function Delta({ value, unit = "%", suffix = "from last week" }) {
   );
 }
 
-function StatTile({ area, icon, title, value, children, to = "/progress" }) {
+
+function StatTile({ area, icon, title, value, children, to = "/progress" })
+{
   const id = `tile-${area}`;
   return (
     <article className={`bento-card stat-tile ${area}`} aria-labelledby={id}>
@@ -90,10 +105,13 @@ function StatTile({ area, icon, title, value, children, to = "/progress" }) {
   );
 }
 
-function HeroCard({ profile, ratings, session, featured, doneToday }) {
+
+function HeroCard({ profile, ratings, session, featured, doneToday })
+{
   let eyebrow, title, meta, cta, to, progress;
 
-  if (!profile) {
+  if (!profile)
+  {
     eyebrow = "Get started";
     title = "Let's build your plan";
     meta = ["Tell us your experience, where you train, and when you're free."];
@@ -127,11 +145,7 @@ function HeroCard({ profile, ratings, session, featured, doneToday }) {
 
   return (
     <section className="bento-card hero-card b-hero" aria-labelledby="hero-title">
-      <div className="hero-art" aria-hidden="true">
-        {Array.from({ length: 7 }, (_, i) => (
-          <span key={i} style={{ "--i": i }} />
-        ))}
-      </div>
+      
       <div className="hero-content">
         <p className="hero-eyebrow">
           {doneToday && !session ? <CheckCircleIcon size={16} /> : <BoltIcon size={16} />}
@@ -163,7 +177,9 @@ function HeroCard({ profile, ratings, session, featured, doneToday }) {
   );
 }
 
-function WeeksCard({ history, now }) {
+
+function WeeksCard({ history, now })
+{
   const weeks = weeklyCounts(history, now, 8);
   const max = Math.max(1, ...weeks.map((w) => w.count));
   return (
@@ -193,7 +209,9 @@ function WeeksCard({ history, now }) {
   );
 }
 
-function CalendarCard({ plan, history, now, doneToday }) {
+
+function CalendarCard({ plan, history, now, doneToday })
+{
   const days = weekStrip(now);
   const planned = new Set(plan.map((p) => p.day));
   const trained = new Set(history.map((h) => dateKey(h.date)));
@@ -253,7 +271,9 @@ function CalendarCard({ plan, history, now, doneToday }) {
   );
 }
 
-function HeatmapCard({ history, now }) {
+
+function HeatmapCard({ history, now })
+{
   const { dates, rows } = activityHeatmap(history, now, 12);
   return (
     <section className="bento-card heatmap-card b-heat" aria-labelledby="heat-title">
@@ -308,7 +328,9 @@ function HeatmapCard({ history, now }) {
   );
 }
 
-function Dashboard() {
+
+function Dashboard()
+{
   usePageTitle("Home");
   const [profile] = useUserData("profile", null);
   const [ratings] = useUserData("ratings", {});
